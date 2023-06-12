@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:OfflineSyncMobileApp.ViewModels"
+    x:Class="OfflineSyncMobileApp.Views.SalesPage"
+    Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:SalesViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Button Text="Sync" Command="{Binding SyncCommand}" />
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        <Label Text="{Binding Total,StringFormat='Registros actuales: {0}'}"/>
+        <Label Text="{Binding Inserts, StringFormat='Inserts: {0}'}"/>
+        <Label Text="{Binding Deletes, StringFormat='Deletes: {0}'}"/>
+        <Label Text="{Binding Updates, StringFormat='Updates: {0}'}"/>
+        <Label Text="{Binding Time,StringFormat='Tiempo: {0}'}"/>
+        <CollectionView ItemsSource="{Binding Sales}"  >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0,5">
+                        <Label Text="{Binding Id, StringFormat='ID: {0}'}" TextColor="Coral"/>
+                        <Label Text="{Binding StoreId, StringFormat='Amount: {0}'}"/>
+                        <Label Text="{Binding ProductId, StringFormat='Store: {0}'}"/>
+                        <Label Text="{Binding SaleAmount, StringFormat='Product: {0}'}"/>
+                        <Label Text="{Binding HashId, StringFormat='HashId: {0}'}"/>
+                        
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+

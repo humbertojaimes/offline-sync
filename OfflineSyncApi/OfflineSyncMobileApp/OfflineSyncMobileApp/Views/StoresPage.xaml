@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:OfflineSyncMobileApp.ViewModels"
+    x:Class="OfflineSyncMobileApp.Views.StoresPage">
+    <ContentPage.BindingContext>
+        <vm:StoresViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Button Text="Sync" Command="{Binding SyncCommand}" />
+        <CollectionView ItemsSource="{Binding Stores}"  >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0,5">
+                        <Label Text="{Binding Id,StringFormat='Id: {0}'}" TextColor="Brown"/>
+                        <Label Text="{Binding  Name,StringFormat='Description: {0}'}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+

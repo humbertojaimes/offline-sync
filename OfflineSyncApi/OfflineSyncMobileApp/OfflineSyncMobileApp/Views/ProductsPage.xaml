@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:OfflineSyncMobileApp.ViewModels"
+    x:Class="OfflineSyncMobileApp.Views.ProductsPage">
+
+    <ContentPage.BindingContext>
+        <vm:ProductsViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
+        <Label Text="{Binding Total,StringFormat='Registros Actuales: {0}'}"/>
+        <CollectionView ItemsSource="{Binding Products}"  >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0,5">
+                        <Label Text="{Binding Id,StringFormat='Id: {0}'}" TextColor="Brown"/>
+                        <Label Text="{Binding  Description,StringFormat='Description: {0}'}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
+
